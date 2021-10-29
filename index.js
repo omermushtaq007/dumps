@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import connectToDatabase from './db.js';
 const app = express(); // entire app
 const port = process.env.PORT || 8888;
+connectToDatabase();
 // cors middleware init
 app.use(cors());
 app.use(
