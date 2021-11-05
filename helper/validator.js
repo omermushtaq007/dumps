@@ -6,6 +6,7 @@ const FirstName = [
     .isLength({ min: 3 })
     .withMessage('this is required fields'),
 ];
+
 const LastName = [
   check('lastName')
     .notEmpty()

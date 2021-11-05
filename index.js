@@ -2,15 +2,18 @@ import express from 'express';
 import cors from 'cors';
 import connectToDatabase from './db.js';
 
+// routes
 import auth from './api/routes/authentication.js';
 import vendor from './api/routes/vendor.js';
 
-const app = express(); // entire app
+// create an express application
+const app = express(); 
+
 const port = process.env.PORT || 8888;
 
-connectToDatabase(); // database
+connectToDatabase(); // connect to database
 
-// cors middleware init
+// middleware
 app.use(cors());
 app.use(
   express.json({
@@ -18,10 +21,12 @@ app.use(
   }),
 );
 
-app.use('/api/v2/auth', auth); // auth init
-app.use('api/v2/vendor', vendor); // vendor init
+// routes use
+app.use('/api/v2/auth', auth);
+app.use('api/v2/vendor', vendor);
 
-// invalid req or api handler.
+// invalid route handler
 app.use('*', (req, res) => res.json('Invalid Api Address').status(404));
 
+// start server
 app.listen(port, () => console.log(`Server started on ${port}`));

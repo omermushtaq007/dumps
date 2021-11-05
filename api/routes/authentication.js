@@ -6,20 +6,23 @@ import {
   Email,
   Password,
 } from '../../helper/validator.js';
+
 const router = express.Router();
 
+// @route   POST api/v2/auth/register
 router.post(
   '/register',
-  // Validation
+  // Validate the user input
   [FirstName, LastName, Email, Password],
-  register, // Controller
+  register, // Call controller
 );
 
+// @route   POST api/v2/auth/login
 router.post(
   '/login',
-  // Validation
+  // Validate the user input
   [Email, Password],
-  login, // Controller
+  login, // Call controller
 );
 
 export default router;
