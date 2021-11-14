@@ -20,7 +20,10 @@ export async function register(req, res) {
     const { firstName, lastName, email, password } = req.body; // destructuring the request body
     // check if the user already exists
     let user = await User.findOne({ email: email });
-    if (user) res.json({ message: 'User already exist' }).status(409);
+    if (user) {
+      res.json({ message: 'User already exist' }).status(409);
+      throw new Error('User already exist');
+    }
     
     // create avatar for the user
     let avatar = gravatar.url(email, {
@@ -41,12 +44,14 @@ export async function register(req, res) {
     user.password = await passwordEncryption(password);
 
     await user.save(); // create a new user
+
     // payload for the token
     const payload = {
       user: {
         id: user.id,
       },
     };
+
     // sign the token
     jwt.sign(
       payload,
@@ -54,7 +59,7 @@ export async function register(req, res) {
       { expiresIn: 3600 },
       (err, token) => {
         if (err) throw err;
-        res.json({ token }).status(200);
+        return res.json({ token }).status(200);
       },
     );
   } catch (e) {
@@ -73,13 +78,20 @@ export async function login(req, res) {
 
   try {
     const { email, password } = req.body; // Get the email and password from the request
+    
     // Check if the user exist
     let user = await User.findOne({ email: email });
-    if (!user) res.json({ message: 'invalid credentials' }).status(401);
+    if (!user) {
+      res.json({ message: 'invalid credentials' }).status(401); 
+      throw new Error('invalid credentials');
+    }
 
     // Check if the password is correct
     const isMatched = await bcrypt.compare(password, user.password);
-    if (!isMatched) res.json({ message: 'invalid credentials' }).status(400);
+    if (!isMatched) {
+      res.json({ message: 'invalid credentials' }).status(400);
+      throw new Error('invalid credentials');
+    }
     
     // Create the payload for the JWT
     const payload = {
@@ -87,6 +99,7 @@ export async function login(req, res) {
         id: user.id,
       },
     };
+
     // Sign the token
     jwt.sign(
       payload,
@@ -94,7 +107,7 @@ export async function login(req, res) {
       { expiresIn: 3600 },
       (err, token) => {
         if (err) throw err;
-        res.json({ token }).status(200);
+        return res.json({ token }).status(200);
       },
     );
   } catch (e) {

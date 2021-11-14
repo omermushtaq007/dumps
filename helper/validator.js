@@ -30,4 +30,20 @@ const Password = [
     .withMessage('must contain a number'),
 ];
 
-export { FirstName, LastName, Email, Password };
+const Slug = [
+  check('slug')
+    .notEmpty()
+    .withMessage('this is required fields')
+    .isLength({ min: 2, max: 40 })
+    .withMessage('must be at least 2 to 40 chars long')
+]
+
+const Certificate = [
+  check('certificate')
+  .notEmpty()
+  .withMessage('this is required fields')
+  .isLength({ min: 2, max: 40 })
+  .withMessage('must be at least 2 to 40 chars long')
+]
+
+export { FirstName, LastName, Email, Password, Slug, Certificate };
