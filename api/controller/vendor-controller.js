@@ -91,7 +91,7 @@ export async function deleteVendor(req, res) {
     });
   } catch (err) {
     console.error(err.message);
-    throw new Error("server internal error");
+    throw (err.message);
   }
 }
 

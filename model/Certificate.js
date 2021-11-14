@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 const CertificateSchema = new mongoose.Schema({
-    slug_Id: { type: mongoose.SchemaTypes.ObjectId, ref: 'vendors' },
     certificateName: {
         type: String,
         require: true,
@@ -11,6 +10,7 @@ const CertificateSchema = new mongoose.Schema({
         require: true,
         default: true,
     },
+    slug_Id: { type: mongoose.SchemaTypes.ObjectId, ref: 'vendors' },
 }, {
     timestamps: true
 });
