@@ -1,10 +1,10 @@
-import express from 'express';
+import {Router} from 'express';
 import { Slug } from '../../helper/validator.js';
 // controllers
 import { createVendor, deleteVendor, findVendors, updateVendor, findSingleVendor } from '../controller/vendor-controller.js';
 // middleware
 import {isAuthorized} from "../middleware/authorization.js"; 
-const router = express.Router()
+const router = Router();
 
 // vendor routes
 router.get('/', findVendors);
