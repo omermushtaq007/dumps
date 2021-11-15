@@ -56,7 +56,7 @@ export async function register(req, res) {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: 3600 },
+      { expiresIn: '24h' },
       (err, token) => {
         if (err) throw err;
         return res.json({ token }).status(200);
@@ -104,7 +104,7 @@ export async function login(req, res) {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: 3600 },
+      { expiresIn: '24h' },
       (err, token) => {
         if (err) throw err;
         return res.json({ token }).status(200);
