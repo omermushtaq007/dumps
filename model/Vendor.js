@@ -6,11 +6,11 @@ const vendorSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    certification: [{certificate: {
+    certification: {certificate: {
         trim: true,
         type: String,
-    }}]
-
+    }}
+    
 }, {
     timestamps: true
 });

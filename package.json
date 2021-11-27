@@ -21,6 +21,7 @@
     "mongoose": "^6.0.12"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "prettier": "^2.5.0"
   }
 }

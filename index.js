@@ -7,7 +7,7 @@ import auth from './api/routes/authentication.js';
 import vendor from './api/routes/vendor.js';
 import cert from './api/routes/certificate.js'
 // create an express application
-const app = express(); 
+const app = express();
 
 const port = process.env.PORT || 8888;
 
