@@ -1,13 +1,14 @@
-import {  Router } from 'express';
+import { Router } from 'express'
 
 // controllers
-import { findExams } from '../controller/exam-controller';
+import { findExams } from '../controller/exam-controller'
 
 // middleware
-import { isAuthorized } from '../middleware/authorization';
+import { isAuthorized } from '../middleware/authorization'
 
-const router = Router();
+const router = Router()
 
-router.get('/', findExams);
+// exam routes
+router.get('/', findExams)
 
-export default router;
+export default router
