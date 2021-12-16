@@ -1,8 +1,8 @@
-import User from '../../model/User.js'
-import gravatar from 'gravatar'
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import { validationResult } from 'express-validator'
+import User from "../../model/User.js"
+import gravatar from "gravatar"
+import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
+import { validationResult } from "express-validator"
 
 // password hashing
 async function passwordEncryption(password) {
@@ -21,15 +21,15 @@ export async function register(req, res) {
     // check if the user already exists
     let user = await User.findOne({ email: email })
     if (user) {
-      res.json({ message: 'User already exist' }).status(409)
-      throw new Error('User already exist')
+      res.json({ message: "User already exist" }).status(409)
+      throw new Error("User already exist")
     }
 
     // create avatar for the user
     let avatar = gravatar.url(email, {
-      s: '200',
-      d: 'mm',
-      r: 'pg',
+      s: "200",
+      d: "mm",
+      r: "pg",
     })
 
     user = new User({
@@ -56,7 +56,7 @@ export async function register(req, res) {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: '365d' },
+      { expiresIn: "365d" },
       (err, token) => {
         if (err) throw err
         return res.json({ token }).status(200)
@@ -82,15 +82,15 @@ export async function login(req, res) {
     // Check if the user exist
     let user = await User.findOne({ email: email })
     if (!user) {
-      res.json({ message: 'invalid credentials' }).status(401)
-      throw new Error('invalid credentials')
+      res.json({ message: "invalid credentials" }).status(401)
+      throw new Error("invalid credentials")
     }
 
     // Check if the password is correct
     const isMatched = await bcrypt.compare(password, user.password)
     if (!isMatched) {
-      res.json({ message: 'invalid credentials' }).status(400)
-      throw new Error('invalid credentials')
+      res.json({ message: "invalid credentials" }).status(400)
+      throw new Error("invalid credentials")
     }
 
     // Create the payload for the JWT
@@ -104,7 +104,7 @@ export async function login(req, res) {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: '365d' },
+      { expiresIn: "365d" },
       (err, token) => {
         if (err) throw err
         return res.json({ token }).status(200)

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose"
 const userSchema = new mongoose.Schema(
   {
     firstName: {
@@ -9,13 +9,15 @@ const userSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
-    isGuest: {
-      type: Boolean,
-      default: true,
+    role: {
+      isAdmin: {
+        type: Boolean,
+        default: false,
+      },
+      isGeneral: {
+        type: Boolean,
+        default: true,
+      },
     },
     email: {
       type: String,
@@ -29,9 +31,17 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    lastLogin: {
+      type: Date,
+      default: Date.now,
+    },
+    status: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true },
 )
-const User = mongoose.model('users', userSchema)
+const User = mongoose.model("users", userSchema)
 
 export default User

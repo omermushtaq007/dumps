@@ -1,30 +1,6 @@
 import { validationResult } from 'express-validator'
 import Vendor from '../../model/Vendor.js'
 
-// findOne vendor
-export async function singleVendor(req, res) {
-  try {
-    const vendor = await Vendor.findOne({
-      _id: req.id,
-    })
-    if (!vendor) {
-      return res.status(404).json({
-        message: 'Vendor not found',
-      })
-    }
-    res.status(200).json({
-      status: 'success',
-      data: vendor,
-    })
-  } catch (err) {
-    // error handling
-    res.status(500).json({
-      status: 'error',
-      message: err.message,
-    })
-  }
-}
-
 // find vendors
 export async function findVendors(req, res) {
   try {
@@ -128,7 +104,7 @@ export async function updateVendor(req, res) {
     })
   }
 }
-
+// find single vendor by url
 export async function findSingleVendor(req, res) {
   try {
     const vendor = await Vendor.findOne({

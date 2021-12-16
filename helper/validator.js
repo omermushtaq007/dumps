@@ -46,4 +46,50 @@ const Certificate = [
     .withMessage('must be at least 2 to 40 chars long'),
 ]
 
-export { FirstName, LastName, Email, Password, Slug, Certificate }
+const ExamName = [
+  check('examName')
+    .notEmpty()
+    .withMessage('this is required fields')
+    .isLength({ min: 2, max: 40 })
+    .withMessage('must be at least 2 to 40 chars long'),
+]
+
+const ExamCode = [
+  check('examCode')
+    .notEmpty()
+    .withMessage('this is required fields')
+    .isLength({ min: 2, max: 40 })
+    .withMessage('must be at least 2 to 40 chars long'),
+]
+
+const Question = [
+  check('question')
+    .isDecimal()
+    .withMessage('must be a number')
+    .notEmpty()
+    .withMessage('this is required fields')
+    .isLength({ min: 2, max: 40 })
+    .withMessage('must be at least 2 to 40 chars long'),
+]
+
+const Price = [
+  check('price')
+    .isDecimal()
+    .withMessage('price must be numbers')
+    .notEmpty()
+    .withMessage('this is required fields')
+    .isLength({ min: 2, max: 40 })
+    .withMessage('must be at least 2 to 40 chars long'),
+]
+export {
+  FirstName,
+  LastName,
+  Email,
+  Password,
+  Slug,
+  Certificate,
+  ExamName,
+  ExamCode,
+  Question,
+  Price,
+}
