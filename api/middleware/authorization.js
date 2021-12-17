@@ -23,7 +23,7 @@ export function isAuthorized(req, res, next) {
   }
 }
 
-export async function isAdmin(req, res, next) {
+export async function isAdminister(req, res, next) {
   const token = req.header("x-auth-token")
   // Check if not token
   if (!token) res.status(401).json({ message: "authorized failed" })

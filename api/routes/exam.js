@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { ExamCode, ExamName, Price, Question } from '../../helper/validator.js'
 
 // controllers
-import { findExams, createExam } from '../controller/exam-controller.js'
+import { findExams, createExam } from '../controller/exam_controller.js'
 
 // middleware
 import { isAuthorized } from '../middleware/authorization.js'

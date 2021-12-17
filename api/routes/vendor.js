@@ -7,7 +7,7 @@ import {
   findVendors,
   updateVendor,
   findSingleVendor,
-} from '../controller/vendor-controller.js'
+} from '../controller/vendor_controller.js'
 // middleware
 import { isAuthorized } from '../middleware/authorization.js'
 const router = Router()

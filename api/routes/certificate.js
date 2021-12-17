@@ -7,7 +7,7 @@ import {
   findCertificate,
   deleteCertificate,
   updateCertificate,
-} from '../controller/cert.controller.js'
+} from '../controller/cert_controller.js'
 import { isAuthorized } from '../middleware/authorization.js'
 
 const router = Router()
