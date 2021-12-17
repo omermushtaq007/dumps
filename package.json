@@ -8,7 +8,7 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "serve": "nodemon index.js",
-    "public": "cd public && yarn start"
+    "client": "cd client && yarn start"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

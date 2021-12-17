@@ -1,15 +1,16 @@
 // import logo from './logo.svg';
-import Navbar from './components/Navbar';
-import './App.css';
-import Home from './page/Home';
+import Navbar from './components/Navbar'
+import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+import Home from './page/Home'
 
 function App() {
   return (
-   <>
-   <Navbar/>
-   <Home />
-   </>
-  );
+    <BrowserRouter>
+      <Navbar />
+      <Home />
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
