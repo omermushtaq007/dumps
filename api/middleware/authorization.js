@@ -1,12 +1,15 @@
 import jwt from "jsonwebtoken"
-import dotenv from "dotenv"
 import User from "../../model/User.js"
+
+import dotenv from "dotenv"
 dotenv.config()
+
 /**
  * @description  This middleware is used to verify the token
  * @param {object} req - The request object
  * @param {object} res - The response object
  */
+
 export function isAuthorized(req, res, next) {
   // Get auth header value
   const token = req.header("x-auth-token")
@@ -23,6 +26,7 @@ export function isAuthorized(req, res, next) {
   }
 }
 
+// isAdmin  middleware  to check if the user is admin
 export async function isAdminister(req, res, next) {
   const token = req.header("x-auth-token")
   // Check if not token
